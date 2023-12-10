@@ -1,3 +1,3 @@
-/home/tglavina/School-Projects/Sof-Arch/drones-transportation/deviceIOT/src/main/java/com/ozanthongtomi/deviceIOT/device/FlightCommander.java
+/home/tglavina/School-Projects/Sof-Arch/drones-transportation/deviceIOT/src/main/java/com/ozanthongtomi/deviceIOT/controller/FlightController.java
 /home/tglavina/School-Projects/Sof-Arch/drones-transportation/deviceIOT/src/main/java/com/ozanthongtomi/deviceIOT/DeviceIotApplication.java
-/home/tglavina/School-Projects/Sof-Arch/drones-transportation/deviceIOT/src/main/java/com/ozanthongtomi/deviceIOT/device/FlighController.java
+/home/tglavina/School-Projects/Sof-Arch/drones-transportation/deviceIOT/src/main/java/com/ozanthongtomi/deviceIOT/service/FlightCommander.java

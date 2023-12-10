@@ -87,15 +87,19 @@ public class FlightService {
         String uri = "http://localhost:8082/dronora/drones/" + id.toString();
         RestTemplate restTemplate = new RestTemplate();
 
+        System.out.println(commandFly(id));
+
         // Create a NewDroneRequest object with the desired status
         NewDroneRequest updatedDroneRequest = new NewDroneRequest(id, name, capacity, "UNAVAILABLE");
         System.out.println(updatedDroneRequest);
         // Make the PUT request
         restTemplate.put(uri, updatedDroneRequest);
+
+        
     };
 
-    public String commandFly() {
-            String uri = "http://localhost:3120/fleet/flight"; //+ id.toString();
+    public String commandFly(Long id) {
+            String uri = "http://localhost:80" + id.toString() + "/device"; //+ id.toString();
 
             RestTemplate restTemplate = new RestTemplate();
 
