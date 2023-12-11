@@ -55,4 +55,9 @@ public class FlightsController {
         Flight flight = new Flight();
         // TODO: logic to update flight
     }
+
+    @GetMapping("/flight/deliver/{id}")
+    public void deliver(@PathVariable Long id) {
+        System.out.println(flightService.deliver(id));
+    }
 }
