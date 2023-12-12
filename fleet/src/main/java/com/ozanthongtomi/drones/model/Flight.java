@@ -15,7 +15,7 @@ import lombok.*;
 @Entity
 public class Flight {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Specify the generation strategy
+    @NotNull
     private Long id;
 
     @NotNull
