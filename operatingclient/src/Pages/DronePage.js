@@ -5,7 +5,7 @@ function DronePage() {
 
     const [data, setData] = useState(null);
     useEffect(() => {
-        fetch('http://localhost:8000/dronora/drones')
+        fetch('http://localhost:8082/dronora/drones')
             .then(response => response.json())
             .then(json => setData(json))
             .catch(error => console.error(error));

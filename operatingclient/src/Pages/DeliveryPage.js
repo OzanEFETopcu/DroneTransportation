@@ -5,7 +5,7 @@ function DeliveryPage() {
 
     const [data, setData] = useState(null);
     useEffect(() => {
-        fetch('http://localhost:8000/dronora/flights')
+        fetch('http://localhost:8082/dronora/flights')
             .then(response => response.json())
             .then(json => setData(json))
             .catch(error => console.error(error));
