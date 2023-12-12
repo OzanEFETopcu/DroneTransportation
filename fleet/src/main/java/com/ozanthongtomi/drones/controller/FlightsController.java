@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.ozanthongtomi.drones.model.Flight;
-import com.ozanthongtomi.drones.model.Drone;
-import com.ozanthongtomi.drones.service.DroneService;
 import com.ozanthongtomi.drones.model.NewFlightRequest;
 import com.ozanthongtomi.drones.service.FlightService;
 
