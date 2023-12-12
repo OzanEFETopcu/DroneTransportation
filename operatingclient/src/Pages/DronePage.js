@@ -4,10 +4,15 @@ import { useState, useEffect } from 'react';
 function DronePage() {
 
     const [data, setData] = useState(null);
+
     useEffect(() => {
         fetch('http://localhost:8082/dronora/drones')
-            .then(response => response.json())
-            .then(json => setData(json))
+            .then(response => {
+                if (response.isOk()) {
+                    setData(response.json());
+                }
+                console.log(response);
+            })
             .catch(error => console.error(error));
     }, [])
 

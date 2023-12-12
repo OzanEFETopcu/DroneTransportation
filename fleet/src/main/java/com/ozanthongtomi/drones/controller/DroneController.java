@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.ozanthongtomi.drones.model.Drone;
 import com.ozanthongtomi.drones.model.NewDroneRequest;
 import com.ozanthongtomi.drones.service.DroneService;
 
+
 @RestController
+@CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("/dronora")
 public class DroneController {
     private final DroneService droneService;

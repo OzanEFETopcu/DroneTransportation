@@ -18,6 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:8082/dronora/drones",
   "eslintConfig": {
     "extends": [
       "react-app",
