@@ -55,7 +55,6 @@ public class FlightService {
 
         if (choosenDrone != null) {
             Flight newFlight = new Flight();
-            newFlight.setId(flight.getId());
             newFlight.setWeight(flight.getWeight());
             newFlight.setStartingPoint(flight.getStartingPoint());
             newFlight.setDestination(flight.getDestination());

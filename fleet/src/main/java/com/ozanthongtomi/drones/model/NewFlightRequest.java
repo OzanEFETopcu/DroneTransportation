@@ -10,13 +10,11 @@ import lombok.ToString;
 @Setter
 @EqualsAndHashCode
 public class NewFlightRequest {
-    private Long id;
     private Location destination;
     private Location startingPoint;
     private int weight;
 
-    public NewFlightRequest(Long id, int weight, Location destination, Location startingPoint){
-        this.id = id;
+    public NewFlightRequest(int weight, Location destination, Location startingPoint){
         this.weight = weight;
         this.destination = destination;
         this.startingPoint = startingPoint;

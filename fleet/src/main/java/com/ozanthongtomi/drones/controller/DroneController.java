@@ -48,10 +48,9 @@ public class DroneController {
     @PostMapping("/drones")
     public void createDrone(@RequestBody NewDroneRequest request) {
         Drone drone = new Drone();
+        drone.setId(request.getId());
         drone.setName(request.getName());
         drone.setCapacity(request.getCapacity());
-        drone.setStatus(request.getStatus());
-        drone.setId(request.getId());
         drone.setStatus(request.getStatus());
         droneService.createDrone(drone);
     }
