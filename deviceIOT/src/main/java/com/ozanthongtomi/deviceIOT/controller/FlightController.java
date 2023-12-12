@@ -1,5 +1,5 @@
 package com.ozanthongtomi.deviceIOT.controller;
-import java.util.concurrent.*;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +19,9 @@ public class FlightController {
         flightCommander.pingDroneUnit();
     }
 
-    @GetMapping(path="/deliver")
-    public String deliver() {
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.schedule(() -> System.out.println(flightCommander.pickUp()), 3, TimeUnit.SECONDS);
-        scheduler.schedule(() -> System.out.println(flightCommander.waitForPizza()), 3, TimeUnit.SECONDS);
-        scheduler.schedule(() -> System.out.println(flightCommander.deliver()), 3, TimeUnit.SECONDS);
-
-        scheduler.shutdown();
-        return flightCommander.comeBack();
+    @GetMapping(path="/deliver/{deliverStatus}")
+    public String deliverProcess(@PathVariable int deliverStatus) {
+       return flightCommander.deliverProcess(deliverStatus); 
     }
 
 }
