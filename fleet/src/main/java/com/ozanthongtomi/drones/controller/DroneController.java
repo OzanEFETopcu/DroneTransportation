@@ -19,7 +19,6 @@ import com.ozanthongtomi.drones.service.DroneService;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("/dronora")
 public class DroneController {
     private final DroneService droneService;
