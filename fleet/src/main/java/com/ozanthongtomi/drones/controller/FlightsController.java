@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ozanthongtomi.drones.model.Flight;
 import com.ozanthongtomi.drones.model.Drone;
+import com.ozanthongtomi.drones.service.DroneService;
 import com.ozanthongtomi.drones.model.NewFlightRequest;
 import com.ozanthongtomi.drones.service.FlightService;
 
@@ -54,9 +55,9 @@ public class FlightsController {
         Flight flight = new Flight();
         // TODO: logic to update flight
     }
-    
-    @GetMapping("/command/fly")
-    public String commandFly() {
-       return flightService.commandFly();
+
+    @GetMapping("/flight/deliver/{id}")
+    public void deliver(@PathVariable Long id) {
+        System.out.println(flightService.deliver(id));
     }
 }

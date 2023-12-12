@@ -61,7 +61,9 @@ public class FlightService {
             newFlight.setDestination(flight.getDestination());
             newFlight.setDroneId(choosenDrone.getId());
             changeDroneStatus(choosenDrone.getId(), choosenDrone.getName(), choosenDrone.getCapacity());
+            System.out.println(commandFly(choosenDrone.getId()));
             return flightRepository.save(newFlight);
+
         } else {
             System.out.println("No drone available or match the capacity required.");
             return null;
@@ -87,21 +89,34 @@ public class FlightService {
         String uri = "http://localhost:8082/dronora/drones/" + id.toString();
         RestTemplate restTemplate = new RestTemplate();
 
+
         // Create a NewDroneRequest object with the desired status
         NewDroneRequest updatedDroneRequest = new NewDroneRequest(id, name, capacity, "UNAVAILABLE");
         System.out.println(updatedDroneRequest);
         // Make the PUT request
         restTemplate.put(uri, updatedDroneRequest);
+        
     };
 
-    public String commandFly() {
-            String uri = "http://localhost:3120/fleet/flight"; //+ id.toString();
+    public String commandFly(Long id) {
+            String uri = "http://localhost:80" + id.toString() + "/device"; //+ id.toString();
 
             RestTemplate restTemplate = new RestTemplate();
 
             String response = restTemplate.getForObject(uri, String.class);
             return response;
     }
+
+        public String deliver(Long id) {
+                String uri = "http://localhost:80" + id.toString() + "/device/deliver"; //+ id.toString();
+
+                RestTemplate restTemplate = new RestTemplate();
+
+                String response = restTemplate.getForObject(uri, String.class);
+                return response;
+        }
+
+    
     
 }
 
