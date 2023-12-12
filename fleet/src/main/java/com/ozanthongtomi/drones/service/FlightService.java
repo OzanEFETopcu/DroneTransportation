@@ -1,6 +1,7 @@
 package com.ozanthongtomi.drones.service;
 
 import java.util.*;
+import java.util.concurrent.*;
 
 import com.ozanthongtomi.drones.helper.Helper;
 import com.ozanthongtomi.drones.model.Drone;
@@ -61,7 +62,6 @@ public class FlightService {
             newFlight.setDestination(flight.getDestination());
             newFlight.setDroneId(choosenDrone.getId());
             changeDroneStatus(choosenDrone.getId(), choosenDrone.getName(), choosenDrone.getCapacity());
-            System.out.println(commandFly(choosenDrone.getId()));
             return flightRepository.save(newFlight);
 
         } else {
@@ -98,25 +98,25 @@ public class FlightService {
         
     };
 
-    public String commandFly(Long id) {
-            String uri = "http://localhost:80" + id.toString() + "/device"; //+ id.toString();
+    public void commandFly(Long id) {
+            ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+            for (int i = 1; i < 5; i++){
+                try{
+                    Thread.sleep(3000);
 
-            RestTemplate restTemplate = new RestTemplate();
-
-            String response = restTemplate.getForObject(uri, String.class);
-            return response;
+                } catch (InterruptedException e) {
+                    System.err.println("Interrumped: " + e.getMessage());
+                }
+                System.out.println(deliver(id, i));
+            }
     }
 
-        public String deliver(Long id) {
-                String uri = "http://localhost:80" + id.toString() + "/device/deliver"; //+ id.toString();
+    public String deliver(Long id, int deliverStatus) {
+            String uri = "http://localhost:80" + id.toString() + "/device/deliver/" + deliverStatus; 
 
-                RestTemplate restTemplate = new RestTemplate();
-
-                String response = restTemplate.getForObject(uri, String.class);
-                return response;
-        }
-
-    
-    
+            RestTemplate restTemplate = new RestTemplate();
+            String response = restTemplate.getForObject(uri, String.class);            
+            return response;
+    }   
 }
 

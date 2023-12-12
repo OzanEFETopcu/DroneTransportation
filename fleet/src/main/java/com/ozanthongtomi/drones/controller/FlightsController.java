@@ -58,7 +58,7 @@ public class FlightsController {
     }
 
     @GetMapping("/flight/deliver/{id}")
-    public void deliver(@PathVariable Long id) {
-        System.out.println(flightService.deliver(id));
+    public void commandFly(@PathVariable Long id) {
+        flightService.commandFly(id);
     }
 }
