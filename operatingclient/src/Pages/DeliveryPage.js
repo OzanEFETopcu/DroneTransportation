@@ -18,12 +18,12 @@ function DeliveryPage() {
                     <h3 style={{ paddingLeft: '5vw' }}>Deliveries</h3>
                 </div>
                 <div>
-                    {data && data.map((drone, i) => (
+                    {data && data.map((delivery, i) => (
                         <Delivery
                             key={i} // Don't forget to add a unique key when mapping over elements
-                            name={drone.name}
-                            status={drone.status}
-                            capacity={drone.capacity}
+                            startingPoint={delivery.startingPoint}
+                            destination={delivery.destination}
+                            weight={delivery.weight}
                         />
                     ))}
                 </div>
