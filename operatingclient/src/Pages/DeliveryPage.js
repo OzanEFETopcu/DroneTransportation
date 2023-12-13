@@ -35,6 +35,8 @@ function DeliveryPage() {
                             destLatitude={delivery.destination.latitude}
                             destLongitude={delivery.destination.longitude}
                             weight={delivery.weight}
+                            drone={delivery.droneId}
+                            status={delivery.status}
                         />
                     ))}
                 </div>

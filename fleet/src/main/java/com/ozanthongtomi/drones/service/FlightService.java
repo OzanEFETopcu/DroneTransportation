@@ -61,7 +61,8 @@ public class FlightService {
             newFlight.setStartingPoint(flight.getStartingPoint());
             newFlight.setDestination(flight.getDestination());
             newFlight.setDroneId(choosenDrone.getId());
-            changeDroneStatus(choosenDrone.getId(), choosenDrone.getName(), choosenDrone.getCapacity());
+            changeDroneStatus(choosenDrone.getId(), choosenDrone.getName(), choosenDrone.getCapacity(), choosenDrone.getStatus());
+            newFlight.setStatus("TO DELIVER");
             return flightRepository.save(newFlight);
 
         } else {
@@ -85,13 +86,17 @@ public class FlightService {
         return Arrays.asList(result);
     };
 
-    public void changeDroneStatus(Long id, String name, int capacity) {
+    public void changeDroneStatus(Long id, String name, int capacity, String status) {
         String uri = "http://localhost:8082/dronora/drones/" + id.toString();
         RestTemplate restTemplate = new RestTemplate();
 
-
+        NewDroneRequest updatedDroneRequest;
         // Create a NewDroneRequest object with the desired status
-        NewDroneRequest updatedDroneRequest = new NewDroneRequest(id, name, capacity, "UNAVAILABLE");
+        if(status == "AVAILABLE") {
+            updatedDroneRequest = new NewDroneRequest(id, name, capacity, "UNAVAILABLE");
+        } else {
+            updatedDroneRequest = new NewDroneRequest(id, name, capacity, "AVAILABLE");
+        }
         System.out.println(updatedDroneRequest);
         // Make the PUT request
         restTemplate.put(uri, updatedDroneRequest);

@@ -1,4 +1,25 @@
-function Delivery({ startingLatitude, startingLongitude, destLatitude, destLongitude, weight }) {
+import React, { useState } from 'react';
+
+
+function Delivery({ startingLatitude, startingLongitude, destLatitude, destLongitude, weight, drone, status }) {
+
+    const[deliveryStatus, setDeliveryStatus] = useState(status);
+
+    function handleDeliver() {
+        const fetchDelivery = async () => {
+            try{
+                console.log(drone)
+                const response = await fetch('http://localhost:8082/dronora/flight/deliver/' + drone );
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                setDeliveryStatus("DELIVERED");
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
+        fetchDelivery();
+    };
 
     return (
         <div className=''>
@@ -8,6 +29,11 @@ function Delivery({ startingLatitude, startingLongitude, destLatitude, destLongi
                 <p className=''>Destination Latitude: {destLatitude}</p>
                 <p className=''>Destination Longitude: {destLongitude}</p>
                 <p className=''>Weight: {weight}</p>
+                <p className=''>Drone: {drone}</p>
+                <p className=''>Status: {deliveryStatus}</p>
+
+                <button id="submit" onClick={handleDeliver}>Deliver</button>
+
             </div>
 
         </div>

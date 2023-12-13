@@ -40,5 +40,8 @@ public class Flight {
     @Column(name = "drone_id")
     @NotNull
     private Long droneId;
+
+    @NotNull
+    private String status;
 }
 
