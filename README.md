@@ -57,19 +57,19 @@ The system was developed as a study project. It was completed as part of Softwar
 *Step-by-step instructions for how to*
 
 *   *clone the code for the system:*
-    
-    *   Clone the code from: [https://gitlab.tamk.cloud/sw-architecture-design-2023-thong-hoang/drones-transportation.git](https://gitlab.tamk.cloud/sw-architecture-design-2023-thong-hoang/drones-transportation.git)
-        
+
+    *   Clone the code from: [https://github.com/OzanEFETopcu/DroneTransportation](https://github.com/OzanEFETopcu/DroneTransportation)
+
 *   *compile & run the service*
-    
+
     *   To devices/drone-8031/, run: java -jar drone.jar (Running on port 8031)
-        
+
     *   To devices/drone-8032/, run: java -jar drone.jar (Running on port 8032)
-        
+
     *   To fleet/, run: mvn clean; mvn spring-boot:run (Running on port 8082)
-        
+
     *   To operatingclient, run: npm ci; npm start; (Running on port 3001)
-        
+
 
 ## Testing instructions
 
@@ -78,16 +78,13 @@ The system was developed as a study project. It was completed as part of Softwar
 Initial check:
 
 *   Send a GET request to verify you have the drones up and running: [http://localhost:8082/dronora/drones](http://localhost:8082/dronora/drones)
-    
+
 
 Create an order:
 
 *   Send a POST request to [http://localhost:8082/dronepizza/pizzaorders](http://localhost:8082/dronepizza/pizzaorders)
-    
+
 *   Content of the body sample:
-    
+
     ![](./attachments/image-20231213-132206.png)
 *   Please wait for the code to do its magic…
-    
-
-How the front end looks:
